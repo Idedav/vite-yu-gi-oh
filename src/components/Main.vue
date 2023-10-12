@@ -19,4 +19,8 @@ export default {
 
 <style lang="scss" scoped>
 
+main{
+    min-height: 90vh;
+}
+
 </style>

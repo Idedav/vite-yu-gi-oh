@@ -40,11 +40,13 @@ import Results from './Results.vue';
 
 .cards-container{
   width: 80%;
+  min-height: 100%;
   background-color: white;
   padding: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 
 </style>
