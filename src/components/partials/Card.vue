@@ -13,7 +13,9 @@
 <template>
   <div class="card-container">
     <div class="dc-card">
-      <img :src="image" alt="">
+      <div class="image">
+        <img :src="image" alt="">
+      </div>
       <p>{{ name }}</p>
       <span>{{ archetype }}</span>
     </div>
@@ -25,6 +27,7 @@
 @use '../../scss/partials/vars' as *;
 .card-container{
   width: calc(100% / 5);
+  max-width: 300px;
   padding: 10px;
   height: 600px;
   .dc-card{
