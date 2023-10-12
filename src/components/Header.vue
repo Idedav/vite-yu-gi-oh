@@ -18,7 +18,9 @@
 header{
   display: flex;
   align-items: center;
-  margin: 20px;
+  height: 100px;
+  padding-left: 20px;
+  background-color: white;
   img {
     width: 100px;
     margin-right: 15px;
