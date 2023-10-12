@@ -19,6 +19,7 @@ import Main from './components/Main.vue';
         axios.get(store.apiUrl)
         .then(result =>{
           store.cardsList = result.data.data;
+          store.cardsReady = true
         })
         .catch(error =>{
           console.log(error);
