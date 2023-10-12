@@ -26,7 +26,7 @@
 .card-container{
   width: calc(100% / 5);
   padding: 10px;
-  height: 500px;
+  height: 600px;
   .dc-card{
     width: 100%;
     height: 100%;
