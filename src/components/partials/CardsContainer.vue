@@ -1,11 +1,13 @@
 <script>
 import { store } from '../../data/store';
 import Card from './Card.vue';
+import Results from './Results.vue';
 
   export default {
     name:'CardsContainer',
     components:{
-      Card
+      Card,
+      Results
     },
     data(){
       return{
@@ -18,6 +20,7 @@ import Card from './Card.vue';
 
 <template>
   <div class="cards-container my-5">
+    <Results />
     <Card 
     v-for="card in store.cardsList"
     :key="card.id"
