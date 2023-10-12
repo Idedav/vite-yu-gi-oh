@@ -1,10 +1,16 @@
 <script>
+import { store } from '../../data/store';
 import Card from './Card.vue';
 
   export default {
     name:'CardsContainer',
     components:{
       Card
+    },
+    data(){
+      return{
+        store
+      }
     }
   }
 </script>
@@ -12,17 +18,13 @@ import Card from './Card.vue';
 
 <template>
   <div class="cards-container my-5">
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-
+    <Card 
+    v-for="card in store.cardsList"
+    :key="card.id"
+    :image="card.card_images[0].image_url"
+    :name="card.name"
+    :archetype="card.archetype"
+    />
   </div>
 </template>
 

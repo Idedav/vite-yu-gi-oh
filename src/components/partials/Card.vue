@@ -1,6 +1,11 @@
 <script>
   export default {
-    name:'Card'
+    name:'Card',
+    props:{
+      image: String,
+      name: String,
+      archetype: String
+    }
   }
 </script>
 
@@ -8,9 +13,9 @@
 <template>
   <div class="card-container">
     <div class="dc-card">
-      <img src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
-      <p>"A" CELL BREEDING DEVICE</p>
-      <span>Alien</span>
+      <img :src="image" alt="">
+      <p>{{ name }}</p>
+      <span>{{ archetype }}</span>
     </div>
   </div>
 </template>
@@ -21,11 +26,12 @@
 .card-container{
   width: calc(100% / 5);
   padding: 10px;
+  height: 500px;
   .dc-card{
     width: 100%;
+    height: 100%;
     text-align: center;
     background-color: $primary-color;
-    padding-bottom: 15px;
     margin-bottom: 20px;
     img{
       width: 100%;
@@ -35,9 +41,10 @@
       font-weight: bold;
       font-size: 1.3rem;
       color: white;
+      padding: 5px 10px;
     }
     span{
-      font-size: 1.7rem;
+      font-size: 1.5rem;
     }
   }
 }

@@ -1,4 +1,6 @@
 <script>
+import axios from 'axios';
+import { store } from './data/store';
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
   export default {
@@ -6,7 +8,26 @@ import Main from './components/Main.vue';
     components:{
       Header,
       Main
-    }
+    },
+    data(){
+      return{
+        store
+      }
+    },
+    methods:{
+      getApi(){
+        axios.get(store.apiUrl)
+        .then(result =>{
+          store.cardsList = result.data.data;
+        })
+        .catch(error =>{
+          console.log(error);
+        })
+      }
+    },
+    mounted(){
+        this.getApi();
+      }
   }
 </script>
 
