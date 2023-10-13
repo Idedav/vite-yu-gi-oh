@@ -27,7 +27,7 @@ import SearchBar from './components/SearchBar.vue';
             store.isLoading = false
             store.cardsList.forEach(card =>{
               if(!store.archetypesList.includes(card.archetype)){
-                if(card.archetype != ''){
+                if(card.archetype){
                   store.archetypesList.push(card.archetype)
                 }
               }
