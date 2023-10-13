@@ -13,9 +13,14 @@ export default {
 
 <template>
   <div class="container mt-5">
-    <select name="" id="">
-        <option selected>Search by archetype</option>
-        <option value="alien">Alien</option>
+    <select v-model="store.archetypeToSearch" id="archetype-select">
+        <option 
+        v-for="(archetype, index) in store.archetypesList"
+        :key="index"
+        :value="archetype"
+        :click="$emit('search')"
+        >{{ archetype }}
+        </option>
     </select>
   </div>
 </template>

@@ -18,32 +18,24 @@ import SearchBar from './components/SearchBar.vue';
     },
     methods:{
       getApi(){
-        store.isLoading = true
-        if(store.archetypeToSearch != ''){
-          axios.get(store.apiUrl,{
-            params:{
-              archetype: store.archetypeToSearch
-            }
-          })
+        store.isLoading = true;
+        const url = store.archetypeToSearch != "" ? store.apiUrl + "?archetype=" + store.archetypeToSearch : store.apiUrl;
+          axios.get(url)
           .then(result =>{
   
             store.cardsList = result.data.data;
             store.isLoading = false
+            store.cardsList.forEach(card =>{
+              if(!store.archetypesList.includes(card.archetype)){
+                if(card.archetype != ''){
+                  store.archetypesList.push(card.archetype)
+                }
+              }
+            })
           })
           .catch(error =>{
             console.log(error);
           })
-        }else{
-          axios.get(store.apiUrl)
-          .then(result =>{
-  
-            store.cardsList = result.data.data;
-            store.isLoading = false
-          })
-          .catch(error =>{
-            console.log(error);
-          })
-        }
       }
     },
     mounted(){
@@ -55,7 +47,7 @@ import SearchBar from './components/SearchBar.vue';
 
 <template>
   <Header />
-  <SearchBar />
+  <SearchBar :search="getApi()"/>
   <Main />
 </template>
 
