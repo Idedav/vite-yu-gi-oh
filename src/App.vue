@@ -3,11 +3,13 @@ import axios from 'axios';
 import { store } from './data/store';
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
+import SearchBar from './components/SearchBar.vue';
   export default {
     name:'App',
     components:{
       Header,
-      Main
+      Main,
+      SearchBar
     },
     data(){
       return{
@@ -16,10 +18,16 @@ import Main from './components/Main.vue';
     },
     methods:{
       getApi(){
-        axios.get(store.apiUrl)
+        store.isLoading = true
+        axios.get(store.apiUrl,{
+          params:{
+            archetype: store.archetypeToSearch
+          }
+        })
         .then(result =>{
+
           store.cardsList = result.data.data;
-          store.cardsReady = true
+          store.isLoading = false
         })
         .catch(error =>{
           console.log(error);
@@ -35,6 +43,7 @@ import Main from './components/Main.vue';
 
 <template>
   <Header />
+  <SearchBar />
   <Main />
 </template>
 

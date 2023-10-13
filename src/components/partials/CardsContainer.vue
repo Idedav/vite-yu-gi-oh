@@ -21,17 +21,17 @@ import Results from './Results.vue';
 
 
 <template>
-  <div class="cards-container my-5">
-      <Results v-if="store.cardsReady === true"/>
+  <div class="container cards-container my-5">
+    <Loader v-if="store.isLoading"/>
+      <Results v-else/>
       <Card 
-      v-if="store.cardsReady === true"
+      v-if="!store.isLoading"
       v-for="card in store.cardsList"
       :key="card.id"
       :image="card.card_images[0].image_url"
       :name="card.name"
       :archetype="card.archetype"
       />
-      <Loader v-else/>
   </div>
 </template>
 
@@ -39,7 +39,6 @@ import Results from './Results.vue';
 <style lang="scss" scoped>
 
 .cards-container{
-  width: 80%;
   min-height: 100%;
   background-color: white;
   padding: 50px;
