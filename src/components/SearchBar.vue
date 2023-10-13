@@ -1,6 +1,12 @@
 <script>
+import { store } from '../data/store';
 export default {
-    name:'SearchBar'
+    name:'SearchBar',
+    data(){
+        return{
+            store
+        }
+    }
 }
 </script>
 
@@ -10,8 +16,6 @@ export default {
     <select name="" id="">
         <option selected>Search by archetype</option>
         <option value="alien">Alien</option>
-        <option value="noble knight">Noble Knight</option>
-        <option value="melodius">Melodious</option>
     </select>
   </div>
 </template>

@@ -3,7 +3,9 @@ import { store } from '../../data/store';
 export default {
     name: 'Results',
     data(){
-        store
+        return{
+            store
+        }
     },
     computed:{
         getResults(){

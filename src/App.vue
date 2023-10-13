@@ -19,19 +19,31 @@ import SearchBar from './components/SearchBar.vue';
     methods:{
       getApi(){
         store.isLoading = true
-        axios.get(store.apiUrl,{
-          params:{
-            archetype: store.archetypeToSearch
-          }
-        })
-        .then(result =>{
-
-          store.cardsList = result.data.data;
-          store.isLoading = false
-        })
-        .catch(error =>{
-          console.log(error);
-        })
+        if(store.archetypeToSearch != ''){
+          axios.get(store.apiUrl,{
+            params:{
+              archetype: store.archetypeToSearch
+            }
+          })
+          .then(result =>{
+  
+            store.cardsList = result.data.data;
+            store.isLoading = false
+          })
+          .catch(error =>{
+            console.log(error);
+          })
+        }else{
+          axios.get(store.apiUrl)
+          .then(result =>{
+  
+            store.cardsList = result.data.data;
+            store.isLoading = false
+          })
+          .catch(error =>{
+            console.log(error);
+          })
+        }
       }
     },
     mounted(){
