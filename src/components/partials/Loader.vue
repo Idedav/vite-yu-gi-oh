@@ -6,42 +6,47 @@ export default {
 
 
 <template>
-  <div class="lds-hourglass"></div>
+  <div class="container d-flex justify-content-center">
+    <div class="card-wrapper">
+      <img class="card" src="/public/front.jpg" alt="" />
+      <img class="card card-back" src="/public/back.jpg" alt="" />
+    </div>
+  </div>
 </template>
 
 
 <style lang="scss" scoped>
 @use '../../scss/partials/vars' as *;
-.lds-hourglass {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-.lds-hourglass:after {
-  content: " ";
-  display: block;
-  border-radius: 50%;
-  width: 0;
-  height: 0;
-  margin: 8px;
-  box-sizing: border-box;
-  border: 32px solid $primary-color;
-  border-color: $primary-color transparent $primary-color transparent;
-  animation: lds-hourglass 1.2s infinite;
-}
-@keyframes lds-hourglass {
+
+@keyframes cardFlip {
   0% {
-    transform: rotate(0);
-    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    transform: rotateY(0deg);
   }
   50% {
-    transform: rotate(900deg);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: rotateY(180deg);
   }
   100% {
-    transform: rotate(1800deg);
+    transform: rotateY(0deg);
   }
+}
+
+.card-wrapper {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: cardFlip 3s ease-in-out infinite;
+  width: 200px;
+  height: 300px;
+}
+
+.card {
+  position: absolute;
+  backface-visibility: hidden;
+  width: 200px;
+  height: 300px;
+}
+
+.card-back {
+  transform: rotateY(180deg);
 }
    
     
